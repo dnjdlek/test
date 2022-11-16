@@ -23,7 +23,8 @@ window.onload = function () {
   let barDiv = document.createElement('div');
   barDiv.className = 'bar';
   let iframe = document.createElement('iframe');
-  iframe.src = 'https://main.d2vbs96akeew7n.amplifyapp.com/notification';
+  let browserToken = localStorage.getItem('browserToken');
+  iframe.src = `https://main.d2vbs96akeew7n.amplifyapp.com/notification?browserToken=42bae3a94c93d3fa886255b680c15104`;
   iframe.width = '100%';
   iframe.height = '100%';
   let dimDiv = document.createElement('div');
