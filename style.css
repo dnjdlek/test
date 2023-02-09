@@ -1,38 +1,70 @@
-#container {
+#lillo-widget {
   /* max-width: 500px;
   width: 100%;
   margin: 0 auto; */
-  background-color: #eee;
-  min-height: 100vh;
+  /* background-color: #eee; */
+  /* min-height: 100vh; */
+  position: relative;
+  transition: 0.4s;
 }
-.toggle-btn {
+#lillo-widget .toggle-btn {
   position: fixed;
   left: calc(50% - 250px + 20px);
-  bottom: 45px;
-  width: 65px;
-  height: 65px;
+  bottom: 18px;
+  width: 42px;
+  height: 42px;
   background-color: #111;
   border-radius: 50%;
   z-index: 10001;
   cursor: pointer;
 }
-.toggle-btn:after {
+
+@keyframes rotate {
+  0% {
+    transform: rotate(-45deg);
+  }
+  /* 25% {
+    transform: rotate(-45deg);
+  } */
+  50% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(-45deg);
+  }
+}
+@keyframes rotate2 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-45deg);
+  }
+}
+#lillo-widget .toggle-btn.active {
+  /* animation: rotate 4s ease-in-out 1s infinite; */
+  animation: rotate 3.6s ease-in-out 0.9s infinite, rotate2 0.9s ease-in-out;
+}
+#lillo-widget .toggle-btn.active:before {
+  display: block;
+}
+#lillo-widget .toggle-btn:after {
   position: absolute;
   display: block;
   content: '';
   left: 50%;
   top: 50%;
   transform: translate(-52.5%, -52.5%);
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   background-image: url('./img/vector.png');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
-.toggle-btn:before {
+#lillo-widget .toggle-btn:before {
   position: absolute;
-  display: block;
+  display: none;
   content: '';
   right: 0;
   top: 0;
@@ -42,12 +74,12 @@
   background-color: #fb4700;
   border-radius: 50%;
 }
-.toggle-btn img {
+#lillo-widget .toggle-btn img {
   width: 24px;
   height: auto;
 }
 
-.widget {
+#lillo-widget .widget {
   position: fixed;
   max-width: 500px;
   width: 100%;
@@ -65,10 +97,9 @@
   z-index: 10002;
 }
 
-.bar {
+#lillo-widget .bar {
   position: absolute;
   display: block;
-  content: '';
   top: 16px;
   left: 50%;
   transform: translateX(-50%);
@@ -81,7 +112,7 @@
   cursor: pointer;
 }
 
-.dim {
+#lillo-widget .dim {
   display: none;
   position: fixed;
   width: 100%;
@@ -93,17 +124,76 @@
   cursor: pointer;
 }
 
-.dim.active {
+#lillo-widget .dim.active {
   display: block;
 }
 
-.widget.active {
+#lillo-widget .widget.active {
   bottom: 0;
   transform: translate(-50%, 0);
 }
 
+#lillo-widget iframe {
+  border: none;
+}
+
 @media (max-width: 500px) {
-  .toggle-btn {
+  #lillo-widget .toggle-btn {
     left: 20px;
   }
+}
+
+/* aasd */
+
+#lillo-widget.pc iframe {
+  transform: scale(0.947);
+}
+
+#lillo-widget.pc .widget {
+  max-width: 370px;
+  max-height: 687px;
+  /* left: 52px; */
+  left: 24px;
+  transform: translate(0, 100%);
+  box-shadow: 0px 3px 30px rgba(0, 0, 0, 0.12);
+}
+
+#lillo-widget.pc .widget.active {
+  bottom: 0;
+  transform: translate(0, 0);
+}
+
+#lillo-widget.pc .bar {
+  position: absolute;
+  display: block;
+  top: 22px;
+  left: 28px;
+  transform: translateX(0);
+  width: 22px;
+  height: 22px;
+  background-image: url('./img/exclude.svg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  background-color: #fff;
+  border-color: none;
+  border-style: none;
+  border-width: none;
+}
+
+#lillo-widget.pc .toggle-btn {
+  width: 65px;
+  height: 65px;
+  left: 24px;
+  bottom: 24px;
+}
+
+#lillo-widget.pc .dim {
+  display: none;
+}
+
+#lillo-widget.pc .toggle-btn:after {
+  width: 30px;
+  height: 30px;
 }
